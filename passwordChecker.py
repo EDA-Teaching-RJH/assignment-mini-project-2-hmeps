@@ -1,4 +1,5 @@
 import re
+import random
 class PasswordStrengthChecker:
     def __init__(self, password):
         self.password = password
@@ -110,3 +111,36 @@ so that the password that is allowed is truly the strongest it could be.
 Creating a feedback list so that the issues with the code can be added to the list and outputted to the user with clear instructions
 and so that the code remembers what previous issues with the password were so the warnings arent repeated
     """
+# To make a random password generator that creates strong passwords for the user if they need
+def generate_strong_passwords(length=12):
+# defined all character sets as random doesnt contain the sets        
+    all_uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    all_lowercase = "abcdefghijklmnopqrstuvwxyz"
+    all_numbers = "0123456789"
+    all_special_chars = "!£$%^&*?<>@#|_"
+#to create the perfect password with atleast one of each condition
+    upper_case = random.choice(all_uppercase)
+    lower_case = random.choice(all_lowercase)
+    used_numbers = random.choice(all_numbers)
+    used_special = random.choice(all_special_chars)
+# add all together to create the generated passwords
+    all_characters = all_uppercase + all_lowercase + all_numbers + all_special_chars
+# to fill in the remaining gaps in the password to make it up to 12 characters
+    extra_space = [
+        random.choice(all_characters)
+        for _ in range(length - 4)
+        ]
+# added to a dictionairy called all_passwords where they are all stored and then a random one is picked from the stored passwords
+    all_passwords = [
+                    upper_case,
+                    lower_case,
+                    used_numbers,
+                    used_special,
+                    ] + extra_space
+    random.shuffle(all_passwords)
+
+    return "".join(all_passwords)
+"""
+Then it joins it to all_passwords so that it is fully accessable and can be called back to at any moment
+and now can produce a generated password for the user
+"""

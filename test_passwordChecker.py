@@ -18,3 +18,7 @@ class testPasswordChecker(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+"""
+Calls back to the main fucntion using unittest
+"""
