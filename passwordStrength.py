@@ -1,4 +1,4 @@
-
+import json
 from passwordChecker import PasswordStrengthChecker
 while True:
     print("=======================================================================")
@@ -36,9 +36,18 @@ continue to ask for the password until this requirement is met. Made into a nice
 the password needs to include.
         """
 
-
 passwordChecker.calculate_strength()
 print("Your Password Score is:", passwordChecker.score)
 print("The strength level of this Password is:", passwordChecker.find_strength())
 print("=======================================================================")
 # This prints out the score in a neat and well presented way, that can be easily followed and interacted with
+
+
+data = {
+        "Password": password,
+        "Score": passwordChecker.score,
+        "Strength": passwordChecker.find_strength()
+    }
+with open("data/results.json", "a") as f:
+    json.dump(data, f)
+    f.write("\n")
