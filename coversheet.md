@@ -10,7 +10,7 @@ Please use this codespace :
 	 Complete - Full Evidence shown of regex with different filters and functions used
  - [ ] **Testing**
 		*Basic* - Some basic testing of functions provided 
-		*Complete* - All functions that can be tested are tested, with individualised tests with a reasonable number of test 				conditions
+		*Complete* - All functions that can be tested are tested, with individualised tests with a reasonable number of test conditions
  - [ ] **Libraries**
 	 Basic - Partial Evidence shown, singular extra library implemented only
 	 Complete - Full Evidence shown, including your own library made
