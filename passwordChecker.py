@@ -42,6 +42,10 @@ like uppercase, special characters and numbers using the very useful regex libra
             self.score +=1
         if self.true_specialchar():
             self.score += 3
+        if self.weak_patterns_true():
+            self.score -=2
+        if self.common_patterns_true():
+            self.score -=4
         return self.score
     """
 The score checker adds a game sense to the regular password checker so that it encourages the user to create stronger and hence safer passwords
@@ -69,3 +73,19 @@ a password really strong and difficult to be leaked or broken!
         ]
         return any(checks)
 # Using regex to stop any common passwords or repetitions in passwords to make them stronger
+    def common_patterns_true(self):
+        patterns = [
+            "12345",
+            "abcde",
+            "ABCDE",
+            "password",
+            "Password"
+        ]
+        for i in patterns:
+            if i in self.password.lower():
+                return True
+        return False
+    """
+Trying to catch any possile really common and easy passwords that may slip under the code and are able to be used
+so that the password that is allowed is truly the strongest it could be.
+    """
