@@ -89,3 +89,26 @@ a password really strong and difficult to be leaked or broken!
 Trying to catch any possile really common and easy passwords that may slip under the code and are able to be used
 so that the password that is allowed is truly the strongest it could be.
     """
+    def obtain_feedback(self):
+        feedback = []
+
+        if len(self.password) <10:
+            feedback.append("Password chosen is too Short!")
+        if not self.true_uppercase():
+            feedback.append("Add uppercase letters!")
+        if not self.true_number():
+            feedback.append("Add numbers!")
+        if not self.true_lowercase():
+            feedback.append("Add lowercase letters!")
+        if not self.true_specialchar():
+            feedback.append("Add special characters!")
+        if self.weak_patterns_true():
+            feedback.append("Avoid adding weak patterns into your chosen Password!")
+        if self.common_patterns_true():
+            feedback.append("Avoid Common Patterns, e.g'Password'!")
+
+        return feedback
+    """
+Creating a feedback list so that the issues with the code can be added to the list and outputted to the user with clear instructions
+and so that the code remembers what previous issues with the password were so the warnings arent repeated
+    """
