@@ -20,7 +20,8 @@ class PasswordStrengthChecker:
             self.true_uppercase() and
             self.true_number() and
             self.true_lowercase() and
-            self.true_specialchar()
+            self.true_specialchar() and
+            not self.weak_patterns_true()
         )
     """
 Created a strong password checker that uses all conditions that a regular password checker would use
@@ -59,3 +60,12 @@ to protect their devices and accounts from potential hacks or data leaks.
 This provides extra information on what score the user shoud be aiming for and provides feedback so that they know what characters make
 a password really strong and difficult to be leaked or broken!
     """
+    def weak_patterns_true(self):
+        checks = [
+            re.search(r"\s", self.password), # no whitespace
+            re.search(r"(.)\1{2,}", self.password), # no single character patterns
+            re.search(r"(..)\1", self.password), # no alternating patterns
+            re.search(r"\d{10,}", self.password), # longer than 10 characters
+        ]
+        return any(checks)
+# Using regex to stop any common passwords or repetitions in passwords to make them stronger

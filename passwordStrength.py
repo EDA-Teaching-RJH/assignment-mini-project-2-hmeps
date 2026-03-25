@@ -25,11 +25,11 @@ while True:
             print("- A lowercase letter!")
         if not passwordChecker.true_specialchar():
             print("- A special character!")
-    """
-While loop makes sure that the program doesnt completely stop once a password below the required 12 characters is inputted, will 
+        """
+While loop makes sure that the program doesnt completely stop once a password below the required 10 characters is inputted, will 
 continue to ask for the password until this requirement is met. Made into a nice format that allows the user to see exactly what
 the password needs to include.
-    """
+        """
 passwordChecker.calculate_strength()
 print("Your Password Score is:", passwordChecker.score)
 print("The strength level of this Password is:", passwordChecker.find_strength())
