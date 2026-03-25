@@ -1,5 +1,5 @@
-import re
-import random
+import re # for the password conditions
+import random # for the random password generator
 class PasswordStrengthChecker:
     def __init__(self, password):
         self.password = password
@@ -7,23 +7,31 @@ class PasswordStrengthChecker:
 #Adding a scoring method to make the password strength into a game
 # Set the class that will be used to check the password for all possible corrections that could be needed
     def true_uppercase(self):
-        return bool(re.search(r"[A-Z]", self.password))
+        return bool(re.search(r"[A-Z]", self.password)) # all uppercase letters
     def true_number(self):
-        return bool(re.search(r"[0-9]", self.password))
+        return bool(re.search(r"[0-9]", self.password)) # all numbers
     def true_lowercase(self):
-        return bool(re.search(r"[a-z]", self.password))
+        return bool(re.search(r"[a-z]", self.password)) #all lowercase
     def true_specialchar(self):
-        return bool(re.search(r"[!£$%^&*?<>@#|_]", self.password))
+        return bool(re.search(r"[!£$%^&*?<>@#|_]", self.password)) #chosen special characters that are allowed
+    """
+Bool is used as it is a True or False condition with only two outcome which suits this situation perfectly because
+there is either a number or there isnt so there is only 2 possible outcomes so bool is perfect, re.search means im searching
+within the regex library to look for the characters that are used and what they mean like [A-Z]
+    """
     
-    def is_strong(self):
+    def is_strong(self): 
+# is_strong is the functon that contains all the other functions used so it is easy to call back to without calling every function used
         return (
             len(self.password) >=10 and
             self.true_uppercase() and
             self.true_number() and
             self.true_lowercase() and
             self.true_specialchar() and
-            not self.weak_patterns_true()
-        )
+            not self.weak_patterns_true() and
+            not self.common_patterns_true()
+            )
+    
     """
 Created a strong password checker that uses all conditions that a regular password checker would use
 like uppercase, special characters and numbers using the very useful regex library

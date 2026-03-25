@@ -1,4 +1,4 @@
-import json
+import json # to store the data in another file
 
 from passwordChecker import PasswordStrengthChecker
 from passwordChecker import generate_strong_passwords
@@ -8,6 +8,7 @@ print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 while True:
     user_choice = str(input("Would you like an automatically generated password? (yes/no): ")).lower().strip()
+# .strip and .lower used so that if they enter Y es or Yes or N o or NO it will be read as yes or no so that it moves on with the program
     if user_choice == "yes":
         password = generate_strong_passwords()
         print(f"Generated Password: {password}")
@@ -51,7 +52,6 @@ The computer password generator should now flow seamlessly into the manual passw
     
         if passwordChecker.is_strong():
 # Use is_strong as all the conditions are under that function so I only have to call a single function instead of countless different ones!
-            print("This password is incredibly strong, and is very unlikely to be broken!")
             print("=======================================================================")
             break
         else:
@@ -95,7 +95,6 @@ the password needs to include.
     with open("data/results.json", "a") as f:
         json.dump(data, f)
         f.write("\n")
-    
     """
 Using json to open other files to convert python script to json so it can be outputted in a file that stores all inputted passwords
 keeping track of their score and how good of a password it is
