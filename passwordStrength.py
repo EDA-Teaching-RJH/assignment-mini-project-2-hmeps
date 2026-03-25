@@ -28,7 +28,7 @@ while True:
         if all:
             print("=======================================================================")
             print("\nFeedback:")
-            for f in passwordChecker.obtain_feedback():
+            for f in passwordChecker.obtain_feedback(): # called back into passwordChecker for the obtain.feedback() function
                 print("-", f)
         """
 While loop makes sure that the program doesnt completely stop once a password below the required 10 characters is inputted, will 
@@ -48,6 +48,12 @@ data = {
         "Score": passwordChecker.score,
         "Strength": passwordChecker.find_strength()
     }
+# created a dcitionary so that extra information that may need to be collected like username can be stored with the password, score
+# and strength if a username input was added.
 with open("data/results.json", "a") as f:
     json.dump(data, f)
     f.write("\n")
+    """
+Using json to open other files to convert python script to json so it can be outputted in a file that stores all inputted passwords
+keeping track of their score and how good of a password it is
+    """

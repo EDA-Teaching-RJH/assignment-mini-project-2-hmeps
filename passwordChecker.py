@@ -53,13 +53,11 @@ to protect their devices and accounts from potential hacks or data leaks.
     """
     def find_strength(self):
         if self.score <=4:
-            return "Really Weak!"
-        elif self.score <= 6:
-            return "Medium Level Strength!"
-        elif self.score <=8:
-            return "Quite Strong!"
+            return "Weak!"
+        elif self.score <=6:
+            return "Medium!"
         else:
-            return "Incredibly Strong!"
+            return "Strong!"
     """
 This provides extra information on what score the user shoud be aiming for and provides feedback so that they know what characters make
 a password really strong and difficult to be leaked or broken!
